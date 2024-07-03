@@ -52,15 +52,15 @@ def model_output_for_TL (pre_trained_model, last_output):
     x = Dropout(0.2)(x)
     
     # Output neuron. 
-    x = Dense(3, activation='softmax')(x)
+    x = Dense(2, activation='softmax')(x)
     
     model = Model(pre_trained_model.input, x)
     
     return model
 
 
-train_dir = os.path.join('C:/Python/rps/datasets/train/')
-test_dir = os.path.join('C:/Python/rps/datasets/test/')
+train_dir = os.path.join('D:/SP/mlai/projek/rps - Copy/rps/datasets/train/')
+test_dir = os.path.join('D:/SP/mlai/projek/rps - Copy/rps/datasets/test/')
 
 train_generator, validation_generator, test_generator = image_gen_w_aug(train_dir, test_dir)
 
@@ -80,7 +80,7 @@ model_TL.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['ac
 history_TL = model_TL.fit(
       train_generator,
       steps_per_epoch=10,  
-      epochs=5,
+      epochs=80,
       verbose=1,
       validation_data = validation_generator)
 
